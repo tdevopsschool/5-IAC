@@ -3,3 +3,4 @@ gitlab_runner_python_module_version: '1.12.1'
 gitlab_runner_register: false
 gitlab_runner_registration_token:
 ci_server_url: https://gitlab.com
+runner_tags: "devops_school1,devops_school2"

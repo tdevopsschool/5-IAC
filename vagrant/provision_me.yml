@@ -6,7 +6,7 @@
   roles:
     - role: ultral.ansible_development
     - role: andrewrothstein.terraform
-    - role: christiangda.awscli
+    #- role: christiangda.awscli
   handlers:
     - name: Restart docker.service
       systemd:

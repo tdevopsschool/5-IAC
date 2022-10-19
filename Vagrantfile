@@ -8,8 +8,10 @@ Vagrant.configure('2') do |config|
   # it's required for forwarding ssh-agent
   # https://www.goncharov.xyz/it/keepass.html
   config.ssh.forward_agent = true
+  
+  config.vm.network "forwarded_port", guest: 8081, host: 8081
 
-  # config.vm.provision "shell", path: "vagrant/provision_me.sh"
+  # config.vm.provision "shell", path: "vagrant/provision_devtoolkit.sh"
 
   config.vm.provision 'ansible_local' do |ansible|
     # https://www.vagrantup.com/docs/provisioning/ansible_local

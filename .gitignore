@@ -24,3 +24,6 @@ crash.log
 
 # Roles checked out via ansible-galaxy
 aws_creds.sh
+
+# for copy-past gitlab registation token
+temp.txt
