@@ -19,7 +19,17 @@ ansible -u ec2-user -i sandbox_aws_ec2.yml -m ping all
 
 ```
 
-## Install gitlab runeer
+## Install docker 
+
+```bash
+ansible-playbook \
+    -vvv \
+    -u ec2-user \
+    -i /vagrant/ansible/sandbox_aws_ec2.yml \
+    /vagrant/ansible/install_docker.yml
+```
+
+## Install gitlab runner
 
 ```bash
 ansible-playbook \

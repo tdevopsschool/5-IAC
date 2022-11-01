@@ -14,7 +14,8 @@
   command: gitlab-runner register --non-interactive --tag-list "{{runner_tags}}"
   environment:
     CI_SERVER_URL: https://gitlab.com
-    RUNNER_EXECUTOR: shell
+    RUNNER_EXECUTOR: docker
+    DOCKER_IMAGE: centos
     REGISTRATION_TOKEN: "{{ gitlab_runner_registration_token }}"
     TEMPLATE_CONFIG_FILE: "{{ gitlab_runner_config_template_path }}"
   when:

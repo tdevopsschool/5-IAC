@@ -18,5 +18,6 @@ galaxy_info:
     - 'ci'
     - 'agent'
     - 'git'
+    - 'docker'
 
 dependencies: []
