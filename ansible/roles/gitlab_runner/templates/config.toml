@@ -3,6 +3,6 @@ check_interval = 0
 [session_server]
   session_timeout = 1800
 [[runners]]
-  name = "shell executor runner"
-  executor = "shell"
-  shell = "bash"
+  name = "docker executor runner"
+  executor = "docker"
+  shell = ""
