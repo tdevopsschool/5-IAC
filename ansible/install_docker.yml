@@ -5,9 +5,6 @@
   become_user: root
   tasks:
 
-    - name: upgrade all packages
-      yum: name=* state=latest
-
     - name: Install required pkgs
       yum:
         name:
