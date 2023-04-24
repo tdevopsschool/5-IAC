@@ -2,4 +2,5 @@
 - src: ultral.ansible_development
 - src: andrewrothstein.terraform
 - src: andrewrothstein.unarchive-deps
+- src: andrewrothstein.hashi
 #- src: christiangda.awscli
