@@ -1,0 +1,5 @@
+plugin: gcp_compute
+projects:
+  - your_account_name
+auth_kind: serviceaccount
+service_account_file: /home/vagrant/gce_key.json

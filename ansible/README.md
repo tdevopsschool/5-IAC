@@ -34,8 +34,39 @@ ansible-playbook \
 ```bash
 ansible-playbook \
     -vvv \
-    -e "gitlab_runner_registration_token=your_token" \
+    -e "gitlab_runner_registration_token=your_token runner_tags=devops_school1,devops_school2" \
     -u ec2-user \
     -i /vagrant/ansible/sandbox_aws_ec2.yml \
     /vagrant/ansible/install_gitlab_runner.yml
 ```
+
+
+##################################################################
+
+# GCP
+
+```bash
+pip install google-auth
+sudo yum install python-requests
+```
+
+# Credential preparation
+Create and upload gce creds in json to place where you are using ansible 
+https://docs.ansible.com/ansible/latest/scenario_guides/guide_gce.html
+
+change the path to the cred file and your project name in google_cloud_filter.gcp.yml
+
+# Check Dynamic ansible inventory
+```bash
+ansible-inventory --list -i google_cloud_filter.gcp.yml
+ansible -u vagrant -i google_cloud_filter.gcp.yml -m ping all
+```
+
+## Install gitlab runner
+```bash
+ansible-playbook \
+    -vvv \
+    -e "gitlab_runner_registration_token=xxx runner_tags=devops_school1,devops_school2" \
+    -u vagrant \
+    -i google_cloud_filter.gcp.yml \
+    /vagrant/ansible/install_gitlab_runner.yml
