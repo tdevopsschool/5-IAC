@@ -1,6 +1,6 @@
 ---
 - name: Verify that gitlab_runner_registration_token is defined if required
-  assert:
+  ansible.builtin.assert:
     that:
       - gitlab_runner_registration_token != None
       - gitlab_runner_registration_token | length > 0
@@ -9,14 +9,14 @@
 # Idea is to decrease the amount of code.
 # We suppose that in case of supported system we just include the required file
 - name: Do distr specific tasks
-  include_tasks: install-{{ ansible_distribution }}-{{ ansible_distribution_major_version }}.yml
+  ansible.builtin.include_tasks: install-{{ ansible_distribution }}-{{ ansible_distribution_major_version }}.yml
 
 # usually gitlab runner package has the same name at all platforms
 # Retries and delay are required to avoid flacky network issue
 # it tries to exec the task 30 times with 5 sec delay till the success
 # if it failed 30 times to install then the task will be marked as failed
 - name: Install gitlab-runner
-  package:
+  ansible.builtin.package:
     name: gitlab-runner
     state: present
   retries: 30
@@ -27,7 +27,7 @@
 # we search for the line in the config
 # In the next tasks we will use for detecting runner registration status
 - name: Ensure config.toml contains registred executor
-  lineinfile:
+  ansible.builtin.lineinfile:
     path: "{{ gitlab_runner_config_path }}"
     line: '  name = "{{ inventory_hostname }}"'
     state: absent
@@ -39,7 +39,7 @@
 # this check is required because gitlab-runner -register command adds strings into the config
 # we create idempotent roles so we should care about it
 - name: Create gitlab-runner config
-  template:
+  ansible.builtin.template:
     owner: root
     group: root
     mode: 0400
@@ -50,12 +50,12 @@
   notify: Restart gitlab-runner.service
 
 - name: Include register gitlab-runner tasks
-  include_tasks: register.yml
+  ansible.builtin.include_tasks: register.yml
   # this key appears because in case of testing role via molecule we should register gitlab-runner each time
   when: gitlab_runner_register
 
 - name: Start gitlab-runner.service
-  systemd:
+  ansible.builtin.systemd:
     name: gitlab-runner.service
     state: started
     enabled: true

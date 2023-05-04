@@ -4,6 +4,5 @@ ansible-lint==6.12.2
 molecule[docker,lint]==4.0.4
 docker
 pyOpenSSL
-lxml
 rich
 yamllint==1.29.0

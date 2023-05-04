@@ -1,6 +1,6 @@
 ---
-- name: prepare repos
-  package:
+- name: Prepare repos
+  ansible.builtin.package:
     name: yum-utils
     state: present
   retries: 30
@@ -9,7 +9,7 @@
   until: result is not failed
 
 - name: Add GitLab Runner repository
-  yum_repository:
+  ansible.builtin.yum_repository:
     name: gitlab-runner
     baseurl: https://packages.gitlab.com/runner/gitlab-runner/el/7/$basearch
     gpgcheck: false

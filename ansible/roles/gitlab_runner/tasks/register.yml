@@ -1,7 +1,7 @@
 ---
 # We create template for runner registration
 - name: Create gitlab-runner config template
-  template:
+  ansible.builtin.template:
     owner: root
     group: root
     mode: 0400
@@ -11,7 +11,7 @@
 
 # we run registration only if the runner is not presented in the config and the template has been changed
 - name: Register gitlab-runner
-  command: gitlab-runner register --non-interactive --tag-list "{{runner_tags}}"
+  ansible.builtin.command: gitlab-runner register --non-interactive --tag-list "{{ runner_tags }}"
   environment:
     CI_SERVER_URL: https://gitlab.com
     RUNNER_EXECUTOR: shell

@@ -1,18 +1,18 @@
 ---
 galaxy_info:
-  role_name: gitlab_runner
+  role_name: iac.gitlab_runner
   author: Lev Goncharov <lev.goncharov@t-systems.com>
   description: Gitlab Runner install
   company: T Systems
   license: Apache
-  min_ansible_version: 2.8
+  min_ansible_version: "2.8"
   platforms:
     - name: 'Centos'
       versions:
         - '7'
+        - '8'
 
   galaxy_tags:
-
     - 'gitlabrunner'
     - 'gitlab'
     - 'ci'
