@@ -4,3 +4,4 @@
     name: gitlab-runner.service
     state: restarted
     enabled: true
+    daemon_reload: true
