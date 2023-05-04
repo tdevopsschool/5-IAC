@@ -23,3 +23,5 @@ jobs:
       - name: run molecule
         run: molecule --debug test
         working-directory: "${{ github.repository }}/ansible/roles/gitlab_runner"
+        env:
+          ANSIBLE_FORCE_COLOR: True
