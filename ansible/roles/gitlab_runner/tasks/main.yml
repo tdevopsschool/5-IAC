@@ -59,3 +59,4 @@
     name: gitlab-runner.service
     state: started
     enabled: true
+  when: gitlab_runner_started
