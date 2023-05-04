@@ -17,7 +17,7 @@ jobs:
       - name: Install ansible dependencies
         uses: py-actions/py-dependency-install@v4
         with:
-          path: "vagrant/requirements.txt"
+          path: "${{ github.repository }}/vagrant/requirements.txt"
       - name: molecule
         uses: gofrolist/molecule-action@v2
         with:
