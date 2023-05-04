@@ -7,6 +7,7 @@
 *.pyc
 *.log
 terraform/envs/vcloud/inventory.yml
+creds.sh
 
 # Local .terraform directories
 **/.terraform/*

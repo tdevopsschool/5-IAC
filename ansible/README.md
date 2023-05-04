@@ -11,7 +11,7 @@ We use [dynamic inventory plugin](https://docs.ansible.com/ansible/latest/plugin
 1. Install collection
 
 ```bash
-ansible-galaxy collection install -r ansible/requirements.yml
+ansible-galaxy install -r ansible/requirements.yml
 ```
 
 2. Install the dependencies required by the collection
@@ -42,7 +42,7 @@ ansible -u ec2-user -i sandbox_aws_ec2.yml -m ping all
 ```bash
 ansible-playbook \
     -vvv \
-    -e "gitlab_runner_registration_token=your_token runner_tags=devops_school1,devops_school2" \
+    -e "gitlab_runner_registration_token=GR1348941QSezy3ZFNb8JNtSm8jix runner_tags=devops_school1,devops_school2" \
     -u ec2-user \
     -i /vagrant/ansible/sandbox_aws_ec2.yml \
     /vagrant/ansible/install_gitlab_runner.yml
