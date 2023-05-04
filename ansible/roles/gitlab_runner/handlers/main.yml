@@ -1,6 +1,8 @@
 ---
 - name: Restart gitlab-runner.service
-  systemd:
+  ansible.builtin.systemd:
     name: gitlab-runner.service
     state: restarted
     enabled: true
+    daemon_reload: true
+  when: gitlab_runner_started

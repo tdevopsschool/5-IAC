@@ -3,5 +3,6 @@
   hosts: all
   vars:
     ansible_user: root
+    gitlab_runner_started: false
   roles:
     - role: gitlab_runner

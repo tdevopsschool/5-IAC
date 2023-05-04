@@ -1,6 +1,17 @@
 ---
-- src: ultral.ansible_development
+collections:
+- name: community.crypto
+  version: 2.11.0
+- name: community.docker
+  version: 3.4.2
+- name: community.general
+  version: 6.4.0
+- name: ansible.posix
+  version: 1.5.1
+- name: community.windows
+  version: 1.13.0
+roles:
+- src: ultral.ansible_docker_centos
 - src: andrewrothstein.terraform
 - src: andrewrothstein.unarchive-deps
 - src: andrewrothstein.hashi
-#- src: christiangda.awscli

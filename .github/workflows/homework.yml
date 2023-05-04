@@ -14,8 +14,14 @@ jobs:
         uses: actions/checkout@v2
         with:
           path: "${{ github.repository }}"
-      - name: molecule
-        uses: gofrolist/molecule-action@v2
+      - uses: actions/setup-python@v4
         with:
-          molecule_options: --debug
-          molecule_working_dir: "${{ github.repository }}/ansible/roles/gitlab_runner"
+          python-version: '3.8'
+          cache: 'pip' # caching pip dependencies
+      - name: install ansible
+        run: pip install -r "${{ github.repository }}/vagrant/requirements.txt"
+      - name: run molecule
+        run: molecule --debug test
+        working-directory: "${{ github.repository }}/ansible/roles/gitlab_runner"
+        env:
+          ANSIBLE_FORCE_COLOR: True

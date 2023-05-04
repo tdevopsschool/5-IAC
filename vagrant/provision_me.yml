@@ -4,9 +4,8 @@
   become: true
   become_user: root
   roles:
-    - role: ultral.ansible_development
+    - role: ultral.ansible_docker_centos
     - role: andrewrothstein.terraform
-    #- role: christiangda.awscli
   handlers:
     - name: Restart docker.service
       systemd:
@@ -34,7 +33,7 @@
     - name: Install linters
       yum:
         name:
-          - ShellCheck.x86_64
+          - ShellCheck
       retries: 30
       delay: 5
       register: result
