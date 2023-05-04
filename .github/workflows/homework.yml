@@ -14,10 +14,11 @@ jobs:
         uses: actions/checkout@v2
         with:
           path: "${{ github.repository }}"
-      - name: Install ansible dependencies
-        uses: py-actions/py-dependency-install@v4
+      - uses: actions/setup-python@v4
         with:
-          path: "${{ github.repository }}/vagrant/requirements.txt"
+          python-version: '3.9'
+          cache: 'pip' # caching pip dependencies
+      - run: pip install -r "${{ github.repository }}/vagrant/requirements.txt"
       - name: molecule
         uses: gofrolist/molecule-action@v2
         with:
