@@ -1,6 +1,7 @@
 ---
 galaxy_info:
-  role_name: iac.gitlab_runner
+  namespace: iac
+  role_name: gitlab_runner
   author: Lev Goncharov <lev.goncharov@t-systems.com>
   description: Gitlab Runner install
   company: T Systems

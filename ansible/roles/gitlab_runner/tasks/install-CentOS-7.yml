@@ -1,6 +1,6 @@
 ---
 - name: Prepare repos
-  package:
+  ansible.builtin.package:
     name: yum-utils
     state: present
   retries: 30
