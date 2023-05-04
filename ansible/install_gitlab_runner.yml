@@ -4,6 +4,7 @@
   become: true
   become_user: root
   roles:
+    - role: ultral.ansible_docker_centos
     - role: gitlab_runner
   vars_prompt:
     - name: gitlab_runner_registration_token

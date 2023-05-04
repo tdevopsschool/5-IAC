@@ -1,0 +1,5 @@
+---
+collections:
+- src: amazon.aws
+roles:
+- src: ultral.ansible_docker_centos
