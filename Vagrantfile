@@ -3,10 +3,11 @@ Vagrant.configure('2') do |config|
 
   config.vm.synced_folder '.',
                           '/vagrant',
-                          mount_options: ['dmode=775,fmode=755']
+                          type: "rsync",
+                          rsync__exclude: ".git/"
 
   if Vagrant::Util::Platform.darwin?
-    config.vm.box = 'centos/7'
+    config.vm.box = 'generic/rocky8'
   else
     config.vm.box = 'bento/centos-7.9'
   end
@@ -24,6 +25,8 @@ Vagrant.configure('2') do |config|
     # https://www.vagrantup.com/docs/provisioning/ansible_common
     ansible.install = true
     ansible.galaxy_roles_path = "/home/vagrant/.ansible/roles"
+    ansible.install_mode = "pip_args_only"
+    ansible.pip_args = "-r /vagrant/vagrant/requirements.txt"
     ansible.galaxy_role_file = "vagrant/requirements.yml"
     ansible.playbook = "vagrant/provision_me.yml"
     ansible.verbose = 'v'
@@ -34,7 +37,7 @@ Vagrant.configure('2') do |config|
     qe.machine = 'q35'
     qe.cpu = 'max'
     qe.net_device = 'virtio-net-pci'
-    qe.memory = '2G'
+    qe.memory = '4G'
   end
   config.vm.provider 'virtualbox' do |v|
     v.memory = 2048
