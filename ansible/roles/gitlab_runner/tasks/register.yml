@@ -8,6 +8,7 @@
     dest: "{{ gitlab_runner_config_template_path }}"
     src: config.toml
   register: gitlab_result_config_template
+  notify: Restart gitlab-runner.service
 
 # we run registration only if the runner is not presented in the config and the template has been changed
 - name: Register gitlab-runner
@@ -20,4 +21,5 @@
   when:
     - not gitlab_result_registred_executor.found
     - gitlab_result_config_template.changed
+  changed_when: false
   notify: Restart gitlab-runner.service

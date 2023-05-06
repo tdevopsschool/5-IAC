@@ -34,6 +34,7 @@
   check_mode: true
   changed_when: false
   register: gitlab_result_registred_executor
+  notify: Restart gitlab-runner.service
 
 # update the config only if the runner is not presented
 # this check is required because gitlab-runner -register command adds strings into the config
