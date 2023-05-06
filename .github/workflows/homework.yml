@@ -18,12 +18,11 @@ jobs:
         with:
           python-version: '3.8'
           cache: 'pip' # caching pip dependencies
-      - name: install ansible
-        run: pip install -r "${{ github.repository }}/vagrant/requirements.txt"
-      - name: install dependencies
-        run: ansible-galaxy install -r  "${{ github.repository }}/vagrant/requirements.yml"
-      - name: run molecule
-        run: molecule --debug test
-        working-directory: "${{ github.repository }}/ansible/roles/gitlab_runner"
+      - name: Molecule
+        uses: gofrolist/molecule-action@v2
+        with:
+          molecule_options: --debug
+          molecule_command: test
+          molecule_working_dir: "${{ github.repository }}/ansible/roles/gitlab_runner"
         env:
-          ANSIBLE_FORCE_COLOR: True
+          ANSIBLE_FORCE_COLOR: '1'
