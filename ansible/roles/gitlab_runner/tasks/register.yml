@@ -11,9 +11,9 @@
 
 # we run registration only if the runner is not presented in the config and the template has been changed
 - name: Register gitlab-runner
-  ansible.builtin.command: gitlab-runner register --non-interactive --tag-list "{{ runner_tags }}"
+  ansible.builtin.command: gitlab-runner register --non-interactive --tag-list "{{ gitlab_runner_tags }}"
   environment:
-    CI_SERVER_URL: https://gitlab.com
+    CI_SERVER_URL: "{{ gitlab_runner_server_url }}"
     RUNNER_EXECUTOR: shell
     REGISTRATION_TOKEN: "{{ gitlab_runner_registration_token }}"
     TEMPLATE_CONFIG_FILE: "{{ gitlab_runner_config_template_path }}"
