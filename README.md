@@ -1,3 +1,4 @@
+moved to https://gitlab.com/t-systems-devops-school/5-IAC
 # cm
 
 Lightweight version of https://github.com/tdevopsschool/ansible-course
